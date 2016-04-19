@@ -1,0 +1,21 @@
+<a class="lead" href="{{ document.docfile.url }}">{{ document.title }}</a>
+{% if document.description %}
+  <br>{{ document.description|linebreaksbr }}
+{% endif %}
+{% if not document.is_public %}
+  <br><span class="label label-warning">private</span>
+{% else %}
+    <br>
+{% endif %}
+{% if document.tags.count %}
+  {% for tag in document.tags.all %}
+    <span class="label label-primary">{{ tag|lower }}</span>&nbsp;
+  {% endfor %}
+{% endif %}
+<br>by <a href="{% url 'datahub:document_user' document.owner.username %}">
+    {{ document.owner.username }}</a>
+{{ document.date_created|timesince }} ago
+{% if document.owner == user or user.is_superuser %}
+  <br><a class="btn btn-default btn-xs" role="button"
+      href="{% url 'datahub:document_edit' document.pk %}">Edit document</a>
+{% endif %}

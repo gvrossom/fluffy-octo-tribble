@@ -1,0 +1,20 @@
+{% extends "datahub/base.html" %}
+
+{% block title %}{{ folder.label }}'s documents{% endblock %}
+
+{% block heading %}
+  <h2>{{ folder.label }}'s documents<br>
+    <small>{{ documents.count }} document(s) in total</small>
+  </h2>
+{% endblock %}
+{% block content %}
+<div class="col-md-8">
+  <ul class="list-unstyled">
+  {% for document in documents %}
+    <li class="well well-sm">{% include "datahub/document.html" %}</li>
+  {% empty %}
+    <li>No folder to display. :(</li>
+  {% endfor %}
+  </ul>
+</div>
+{% endblock %}
