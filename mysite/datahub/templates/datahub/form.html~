@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+  {% if create %}Create{% else %}Edit{% endif %} document
+{% endblock %}
+
+{% block heading %}
+  <h2>
+    {% if create %}
+      Create document
+    {% else %}
+      Edit document
+    {% endif %}
+  </h2>
+{% endblock %}
+
+{% block content %}
+  {% if create %}
+    {% url "datahub_document_create" as action_url %}
+  {% else %}
+    {% url "datahub_document_edit" pk=form.instance.pk as action_url %}
+  {% endif %}
+  <form action="{{ action_url }}" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+    {{ form|crispy }}
+    {% csrf_token %}
+    <p><input type="submit" class="btn btn-default" value="Save"></p>
+  </form>
+{% endblock %}

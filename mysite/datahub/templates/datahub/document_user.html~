@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}{{ owner.username }}'s documents{% endblock %}
+
+{% block heading %}
+  <h2>{{ owner.username }}'s documents<br>
+    <small>{{ documents.count }} files in total | {{ folders.count }} folders</small>
+  </h2>
+{% endblock %}
+
+{% block content %}
+<div class="col-md-6">
+  <ul class="list-unstyled">
+  {% for document in documents %}
+    <li class="well well-sm">{% include "datahub/document.html" %}</li>
+  {% empty %}
+    <li>No documents. :(</li>
+  {% endfor %}
+  </ul>
+</div>
+{% endblock %}
+
+
+{% block sidebar %}
+<div class="col-md-6">
+  <ul class="list-unstyled">
+  {% for folder in folders %}
+    <li class="well well-sm">{% include "datahub/folder.html" %}</li>
+  {% empty %}
+    <li>No folder to display. :(</li>
+  {% endfor %}
+  </ul>
+</div>
+{% endblock %}

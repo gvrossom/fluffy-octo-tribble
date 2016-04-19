@@ -1,0 +1,18 @@
+<a class="lead" href="{% url 'datahub:folder_detail' folder.id %}">{{ folder.label }}</a>
+{% if folder.description %}# ex: /documents/5/
+  <br>{{ folder.description|linebreaksbr }}
+{% endif %}
+{% if not folder.is_public %}
+  <br><span class="label label-warning">private</span>
+{% else %}
+    <br>
+{% endif %}
+{% if folder.tags.count %}
+  {% for tag in folder.tags.all %}
+    <span class="label label-primary">{{ tag|lower }}</span>&nbsp;
+  {% endfor %}
+{% endif %}
+<br>owner: <a href="{% url "datahub:document_user" folder.owner.username %}">
+    {{ folder.owner.username }}</a>
+
+<br>{{ folder.date_created|timesince }} ago

@@ -1,0 +1,19 @@
+{% extends "datahub/base.html" %}
+
+{% block title %}Latest folders{% endblock %}
+
+{% block heading %}
+  <h2>Latest folders</h2>
+{% endblock %}
+
+{% block content %}
+<div class="col-md-8">
+  <ul class="list-unstyled">
+  {% for folder in folders %}
+    <li class="well well-sm">{% include "datahub/folder.html" %}</li>
+  {% empty %}
+    <li>No folder to display. :(</li>
+  {% endfor %}
+  </ul>
+</div>
+{% endblock %}

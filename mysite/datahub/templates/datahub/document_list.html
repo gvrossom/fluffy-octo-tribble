@@ -1,0 +1,32 @@
+{% extends "datahub/base.html" %}
+{% load datahub_tags %}
+
+{% block title %}Latest documents{% endblock %}
+
+{% block heading %}
+  <h2>Latest files</h2>
+{% endblock %}
+
+{% block content %}
+<div class="col-md-8">
+  <ul class="list-unstyled">
+  {% for document in documents %}
+    <li class="well well-sm">{% include "datahub/document.html" %}</li>
+  {% empty %}
+    <li>No documents. :(</li>
+  {% endfor %}
+  </ul>
+</div>
+{% endblock %}
+
+{% block sidebar %}
+<div class="col-md-4">
+  <div class="panel panel-primary">
+    <div class="panel-heading">File tags</div>
+      <div class="panel-body">
+		{% tagcloud %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
