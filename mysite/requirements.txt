@@ -19,5 +19,5 @@ pyOpenSSL==0.15.1
 pytz==2016.3
 six==1.10.0
 sorl-thumbnail==12.3
-urllib3==1.14
+urllib3==1.26.5
 wiki==0.1
