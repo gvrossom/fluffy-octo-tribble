@@ -20,4 +20,4 @@ pytz==2016.3
 six==1.10.0
 sorl-thumbnail==12.3
 urllib3==1.14
-wiki==0.1
+wiki==0.7.9
